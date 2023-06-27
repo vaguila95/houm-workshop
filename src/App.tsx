@@ -5,31 +5,9 @@ import {
   Navigate,
 } from "react-router-dom";
 import useAuthentication from "./hooks/useAuthentication";
+import BeersApp from "./components/BeersApp";
+import Landing from "./components/Landing";
 
-
-const BeersApp = () => {
-  const { handleLogout } = useAuthentication();
-  return (
-    <div>
-      <h2>Beers App</h2>
-      <button type="button" onClick={handleLogout}>
-        logout
-      </button>
-    </div>
-  );
-};
-
-const Landing = () => {
-  const { handleLogin } = useAuthentication();
-  return (
-    <div>
-      <h2>Landing</h2>
-      <button type="button" onClick={handleLogin}>
-        login
-      </button>
-    </div>
-  );
-};
 
 function App() {
   const { isLoggedIn, redirectURL } = useAuthentication();
