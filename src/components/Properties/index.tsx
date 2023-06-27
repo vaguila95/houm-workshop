@@ -1,10 +1,15 @@
 import { useNavigate } from "react-router-dom";
 import useAuthentication from "../../hooks/useAuthentication";
-import Form from "./components/Form/Form";
+import Form, { IFormData } from "./components/Form/Form";
 
 const Properties = (() => {
   const { handleLogout } = useAuthentication();
   const navigate = useNavigate()
+
+  const handleSubmit = (formData: IFormData) => {
+    console.log(formData);
+    
+  }
 
   return (
     <div>
@@ -15,7 +20,7 @@ const Properties = (() => {
       <button type="button" onClick={() => navigate("/beers")}>
         beers
       </button>
-      <Form />
+      <Form onSubmit={handleSubmit}/>
     </div>
   )
 });
