@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import useAuthentication from "../../hooks/useAuthentication";
+import Form from "./components/Form/Form";
 
 const Properties = (() => {
   const { handleLogout } = useAuthentication();
@@ -14,6 +15,7 @@ const Properties = (() => {
       <button type="button" onClick={() => navigate("/beers")}>
         beers
       </button>
+      <Form />
     </div>
   )
 });
