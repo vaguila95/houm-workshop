@@ -1,9 +1,12 @@
 import { useNavigate } from "react-router-dom";
 import useAuthentication from "../../hooks/useAuthentication";
+import muohService from "../../services/muohService";
 
 const Properties = (() => {
   const { handleLogout } = useAuthentication();
   const navigate = useNavigate()
+
+  const fetchProperties = muohService.fetchProperties()
 
   return (
     <div>
