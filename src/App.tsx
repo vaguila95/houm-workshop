@@ -15,7 +15,7 @@ function App() {
   const { isLoggedIn, redirectURL } = useAuthentication();
   return (
       <div className="App">
-        <img src={Logo} alt="logo" />
+        <img src={Logo} alt="logo" className="App-logo"/>
         <h1>Muoh</h1>
         <h4>{isLoggedIn ? "bienvenido" : "debes iniciar sesión"}</h4>
         <Routes>
