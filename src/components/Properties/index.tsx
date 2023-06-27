@@ -1,18 +1,26 @@
+// import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+
 import useAuthentication from "../../hooks/useAuthentication";
-import muohService from "../../services/muohService";
-import Form from "./components/Form/Form";
-import { useEffect } from "react";
+// import muohService from "../../services/muohService";
+// import IProperty from "../../models/Property";
+import Form, { IFormData } from "./components/Form/Form";
+// import parseProperties from "./utils";
+import Property from "./components/Property/Property";
+import useGetProperties from "./hooks/useGetProperties";
+import usePostProperty from "./hooks/usePostProperty";
 
 const Properties = (() => {
   const { handleLogout } = useAuthentication();
   const navigate = useNavigate()
+  const { data: properties, isError, isLoading } = useGetProperties();
+  const { mutate } = usePostProperty()
 
-  const fetchProperties = muohService.fetchProperties()
+  const handleSubmit = (data: IFormData) => mutate(data)
 
-  useEffect(() => {
-    (async () => muohService.fetchProperties())()
-  }, [fetchProperties])
+  if (isLoading) return <p>Loading...</p>
+
+  if (isError) return <p>Something went wrong</p>
 
   return (
     <div>
@@ -23,7 +31,10 @@ const Properties = (() => {
       <button type="button" onClick={() => navigate("/beers")}>
         beers
       </button>
-      <Form />
+      <Form onSubmit={handleSubmit}/>
+      {properties?.map((property) => (
+        <Property key={property.id} {...property} />
+      ))}
     </div>
   )
 });

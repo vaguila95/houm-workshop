@@ -5,6 +5,16 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
 import { AuthenticationProvider } from './contexts/authenticationContext';
+import { QueryClient, QueryClientProvider } from 'react-query';
+
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      refetchOnWindowFocus: false,
+      refetchOnMount: false,
+    },
+  },
+});
 
 
 const root = ReactDOM.createRoot(
@@ -14,7 +24,9 @@ root.render(
   <React.StrictMode>
   <BrowserRouter>
     <AuthenticationProvider>
-      <App />
+      <QueryClientProvider client={queryClient}>
+        <App />
+      </QueryClientProvider>
     </AuthenticationProvider>
   </BrowserRouter>
 </React.StrictMode>
