@@ -1,11 +1,7 @@
-// import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import useAuthentication from "../../hooks/useAuthentication";
-// import muohService from "../../services/muohService";
-// import IProperty from "../../models/Property";
 import Form, { IFormData } from "./components/Form/Form";
-// import parseProperties from "./utils";
 import Property from "./components/Property/Property";
 import useGetProperties from "./hooks/useGetProperties";
 import usePostProperty from "./hooks/usePostProperty";
